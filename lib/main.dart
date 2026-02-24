@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inter/core/di.dart';
-import 'package:inter/post/screens/post_screen.dart';
-import 'package:provider/provider.dart';
+
 
 void main() {
-  runApp( MultiProvider(
-    
-    providers: [
-
-ChangeNotifierProvider(create: (context) => postRepo,)
-
-    ],
-    child: MyApp()));
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,6 +19,6 @@ class MyApp extends StatelessWidget {
       
       
       
-      home: PostScreen(),);
+      home: null,);
   }
 }
