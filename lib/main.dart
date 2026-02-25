@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:inter/features/login/presentation/provider/obscure_provider.dart';
 import 'package:inter/features/login/presentation/screens/login_screen.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
-  runApp( MyApp());
+  runApp( MultiProvider(
+    
+    providers: [ChangeNotifierProvider(create: (context) => ObscureProvider(),)],
+    child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
