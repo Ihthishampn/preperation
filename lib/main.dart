@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:inter/core/di/di.dart';
+import 'package:inter/features/login/presentation/provider/login_provider.dart';
 import 'package:inter/features/login/presentation/provider/obscure_provider.dart';
 import 'package:inter/features/login/presentation/screens/login_screen.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +9,10 @@ import 'package:provider/provider.dart';
 void main() {
   runApp( MultiProvider(
     
-    providers: [ChangeNotifierProvider(create: (context) => ObscureProvider(),)],
+    providers: [
+      ChangeNotifierProvider(create: (context) => ObscureProvider(),),
+      ChangeNotifierProvider(create: (context) => LoginProvider(loginRepo),)
+      ],
     child: MyApp()));
 }
 

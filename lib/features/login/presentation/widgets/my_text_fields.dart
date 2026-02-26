@@ -3,9 +3,10 @@ import 'package:inter/features/login/presentation/provider/obscure_provider.dart
 import 'package:provider/provider.dart';
 
 class MyTextFields extends StatelessWidget {
+  final TextEditingController controller;
   final bool? suffix;
   final String hint;
-  const MyTextFields({super.key, required this.hint, this.suffix});
+  const MyTextFields({super.key, required this.hint, this.suffix, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,9 @@ class MyTextFields extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(12.0),
           child: TextField(
+            controller: controller,
             keyboardType: TextInputType.emailAddress,
-            obscureText: value.obscure,
+            obscureText:  suffix == true ? value.obscure : false,
 
             decoration: InputDecoration(
               suffixIcon: suffix == true
