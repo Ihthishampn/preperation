@@ -6,7 +6,7 @@ import 'package:inter/features/login/data/model/autha_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUseCase {
-  final DioClient dio;
+  final DioClientnew dio;
   LoginUseCase(this.dio);
 
   Future<AuthaModel> loginUseCase({
@@ -18,10 +18,10 @@ class LoginUseCase {
         "login",
         data: {"username": username, "password": password},
       );
-    
+
       log(user.data.toString());
       final AuthaModel model = AuthaModel.fromJson(user.data);
-  final SharedPreferences _pref = await SharedPreferences.getInstance();
+      final SharedPreferences _pref = await SharedPreferences.getInstance();
       _pref.setString("accessToken", model.accessToken);
       _pref.setString("refreshToken", model.refreshToken);
       return model;

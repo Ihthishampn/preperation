@@ -3,6 +3,10 @@ import 'package:inter/core/di/di.dart';
 import 'package:inter/features/login/presentation/provider/login_provider.dart';
 import 'package:inter/features/login/presentation/provider/obscure_provider.dart';
 import 'package:inter/features/login/presentation/screens/login_screen.dart';
+import 'package:inter/features/newAuth/normal/di/di.dart';
+import 'package:inter/features/newAuth/presentation/provider/newlogin_provider.dart';
+import 'package:inter/features/newAuth/presentation/screens/login_new_screen.dart';
+import 'package:inter/features/newAuth/presentation/screens/splah.dart';
 import 'package:provider/provider.dart';
 
 // void main() {
@@ -32,7 +36,11 @@ import 'package:provider/provider.dart';
 // new authhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    
+    
+    providers: [ChangeNotifierProvider(create: (context) => NewloginProvider(repoNew),)],
+    child: const MyApp()));
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -43,7 +51,7 @@ class MyApp extends StatelessWidget {
 
 
 debugShowCheckedModeBanner: false,
-home: null,
+home: Splah(),
 
     );
   }
