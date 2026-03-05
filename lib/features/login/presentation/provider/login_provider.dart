@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:inter/core/appstate/app_state.dart';
+import 'package:inter/features/core/appstate/app_state.dart';
 import 'package:inter/features/login/data/model/autha_model.dart';
 import 'package:inter/features/login/domain/login_repository.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:inter/core/appstate/app_state.dart';
+import 'package:inter/features/core/appstate/app_state.dart';
 
 import 'package:inter/features/login/presentation/provider/login_provider.dart';
 import 'package:inter/features/login/presentation/widgets/my_text_fields.dart';

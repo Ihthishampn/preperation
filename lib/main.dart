@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inter/core/di/di.dart';
+import 'package:inter/features/core/di/di.dart';
 import 'package:inter/features/login/presentation/provider/login_provider.dart';
 import 'package:inter/features/login/presentation/provider/obscure_provider.dart';
 import 'package:inter/features/login/presentation/screens/login_screen.dart';
@@ -9,14 +9,36 @@ import 'package:inter/features/newAuth/presentation/screens/login_new_screen.dar
 import 'package:inter/features/newAuth/presentation/screens/splah.dart';
 import 'package:provider/provider.dart';
 
-// void main() {
-//   runApp( MultiProvider(
+//  firebase auth, firestore
 
-//     providers: [
-//       ChangeNotifierProvider(create: (context) => ObscureProvider(),),
-//       ChangeNotifierProvider(create: (context) => LoginProvider(loginRepo),)
+void main() {runApp(MyApp());}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(debugShowCheckedModeBanner: false,highContrastDarkTheme: null,);
+  }
+}
+
+
+
+
+
+
+
+
+// void main() {
+//   runApp(
+//     MultiProvider(
+//       providers: [
+//         ChangeNotifierProvider(create: (context) => ObscureProvider()),
+//         ChangeNotifierProvider(create: (context) => LoginProvider(loginRepo)),
 //       ],
-//     child: MyApp()));
+//       child: MyApp(),
+//     ),
+//   );
 // }
 
 // class MyApp extends StatelessWidget {
@@ -24,35 +46,30 @@ import 'package:provider/provider.dart';
 
 //   @override
 //   Widget build(BuildContext context) {
-
-//     return MaterialApp(
-
-//       debugShowCheckedModeBanner: false,
-
-//       home: LoginScreen(),);
+//     return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen());
 //   }
 // }
 
-// new authhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+// new authhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh jwt token
 
-void main() {
-  runApp(MultiProvider(
+// void main() {
+//   runApp(MultiProvider(
     
     
-    providers: [ChangeNotifierProvider(create: (context) => NewloginProvider(repoNew),)],
-    child: const MyApp()));
-}
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+//     providers: [ChangeNotifierProvider(create: (context) => NewloginProvider(repoNew),)],
+//     child: const MyApp()));
+// }
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
 
 
-debugShowCheckedModeBanner: false,
-home: Splah(),
+// debugShowCheckedModeBanner: false,
+// home: SplashScreen(),
 
-    );
-  }
-}
+//     );
+//   }
+// }

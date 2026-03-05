@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:inter/core/dio_client.dart/dio_client.dart';
+import 'package:inter/features/core/dio_client.dart/dio_client.dart';
 import 'package:inter/features/newAuth/data/model/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

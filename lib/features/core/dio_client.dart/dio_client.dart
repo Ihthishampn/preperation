@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:inter/core/api/end_points.dart';
+import 'package:inter/features/core/api/end_points.dart';
 
 class DioClientnew {
   final Dio dio;

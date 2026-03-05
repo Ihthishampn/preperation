@@ -1,38 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:inter/features/login/presentation/screens/login_screen.dart';
-import 'package:inter/features/newAuth/presentation/screens/home-Screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class Splah extends StatefulWidget {
-  const Splah({super.key});
-
-  @override
-  State<Splah> createState() => _SplahState();
-}
-
-class _SplahState extends State<Splah> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      final String? val = pref.getString("NewAuth");
-      if (val == null) {
-        Navigator.of(
-          context,
-        ).push(MaterialPageRoute(builder: (context) => LoginScreen()));
-      } else {
-        Navigator.of(
-          context,
-        ).push(MaterialPageRoute(builder: (context) => Homescreen()));
-      }
-    });
-  }
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Center(child: Text("Checking where i can go"))),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFD4DCFF),
+              Color(0x00FFFFFF), // transparent
+              Color(0xFFD4DCFF),
+            ],
+          ),
+        ),
+        child: Center(
+          child: Image.asset(
+            "assets/images/logo.png",
+            width: 150,
+          ),
+        ),
+      ),
     );
   }
 }
