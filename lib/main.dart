@@ -6,27 +6,28 @@ import 'package:inter/features/products/presentation/screens/product_screen.dart
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-    
-    providers: [
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(productRepoDi),
+        ),
+      ],
 
-ChangeNotifierProvider(create: (context) => ProductProvider(productRepoDi),)
-    ],
-
-    child: App()));
+      child: App(),
+    ),
+  );
 }
-
-
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
-    
-    home:  ProductScreen(),
-    
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      home: ProductScreen(),
     );
   }
 }

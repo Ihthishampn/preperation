@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:inter/features/products/data/model/product_model.dart';
 import 'package:inter/features/products/presentation/provider/product_provider.dart';
 import 'package:inter/features/products/presentation/widgets/product_card.dart';
 import 'package:provider/provider.dart';
@@ -13,38 +12,45 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ProductProvider>().fetchProducts();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final p = context.watch<ProductProvider>();
-
     return Scaffold(
-      body: FutureBuilder<List<ProductModel>>(
-        future: p.handleFetch(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+      appBar: AppBar(title: const Text("Products")),
+
+      body: Consumer<ProductProvider>(
+        builder: (context, p, child) {
+       if (p.state == AppState.initial || p.state == AppState.loading) {
+    return const Center(child: CircularProgressIndicator());
+  }
+
+          if (p.state == AppState.error) {
+            return Center(child: Text(p.error ?? "Something went wrong"));
           }
 
-          if (snapshot.hasError) {
-            return Center(child: Text(snapshot.error.toString()));
+          if (p.products.isEmpty) {
+            return const Center(child: Text("No products found"));
           }
-          if (!snapshot.hasData) {
-            return Center(child: Text("No data"));
-          }
-          final snaps = snapshot.data;
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              return ProductCard(pro: null);
-            },
+
+          return RefreshIndicator(
+            onRefresh: () => p.fetchProducts(),
+            child: ListView.builder(
+              itemCount: p.products.length,
+              itemBuilder: (context, index) {
+                return ProductCard(product: p.products[index]);
+              },
+            ),
           );
         },
       ),
     );
+    
   }
 }
-
-// UI Requirements
-// - Display product image on the left
-// - Show title (max 2 lines)
-// - Display price prominently
-// - Show rating with star icon
-// - Use card-based layout with spacing and padding
