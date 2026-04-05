@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:inter/core/dio_client/dio_client.dart';
-import 'package:inter/provider/product_provider.dart';
-import 'package:inter/screens/product_screen.dart';
-import 'package:inter/services/product_service.dart';
-import 'package:provider/provider.dart';
+import 'package:inter/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:inter/features/home/presentation/screens/home_screen.dart';
 
-void main() {
-  runApp(MultiProvider(
-    providers: [
-      
-      ChangeNotifierProvider(create: (context) => ProductProvider(ProductService(DioClient())),)],
-    
-    child: App()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(App());
 }
 
 class App extends StatelessWidget {
@@ -19,9 +13,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ProductScreen(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SignUpScreen());
   }
 }
